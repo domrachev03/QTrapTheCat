@@ -7,7 +7,7 @@ Our project is **Quantum Trap the Cat Game**. You are given a hexagonal field wi
 More strictly, this is a turn based game. Each step you can either spawn an obstacle in the selected hexagon or make the measurement of the cats state. The cat each step can either make an ordinary step in the desired (not blocked) direction, or make a superposition step into multiple directions simultaneously. To win, you should isolate the cat from the borders of the field.
 
 # Game requirenments
-The game is just a jupyter notebook built to run on any machine. It was heavilly tested on IBM Quantum Lab runtime. 
+The game is just a jupyter notebook built to run on any machine. The only requirements are to install used libraries. It was heavilly tested on IBM Quantum Lab runtime. 
 
 # Implementation Details
 Our project is built as a monolitic jupyter notebook. It is only necessary to download the sprites of the cat and the dog for the proper functioning. 
@@ -24,14 +24,14 @@ The game consists primarily of several classes. The most important of them:
 3. AI - a class specialised on finding and prioriting the winning paths on the field for further traversing
 ## Quantumm Internals
 Even though the cat is ran on the simulated hardware, it is completely quantum based. The main feature of the cat is quantum coordinates.
-Quantum coordinates allow to entangle the position of the cat properly depending on the moves. It is much more elegant and efficient solution then straightforward encoding of the possible states. Moreover, this behaviour allows us to create a high level of abstraction, where a usde is not required to understand the internals of the cat, but just call a simple self-descriptive and well-documented methods.
+Quantum coordinates allow to entangle the position of the cat properly depending on the moves. It is much more elegant and efficient solution then straightforward encoding of the possible states. Moreover, this behaviour allows us to create a high level of abstraction, where a usde is not required to understand the internals of the cat, but just call a simple self-descriptive and well-documented methods. Finally, quantum coordinates are absolutely necessary to create quantum AI for this game.
 ## Classicals Internals
 In this project we used five different coordinate systems. Each coordinate system is perfectly designed to solve one specific problem.
-1. **canvas coordinates** - default coordinates used in canvas to draw and layout widgets
-2. **complex plane** - complex plane is perfect for constructing different objects, such as hexagons using complex surface transformations
-3. **field coordinate system** - a system used as a bijection onto the corresponding rectangular table to store and update objects information and simplify objects iteration and drawing into the canvas
-4. **ai coordinate system** - AI uses its own variation of a coordinate system, perfectly polished for table traversal and conversion into the graph.
-5. **quantum cat coordinates** - the cat uses its own coordinates which solve the issue of moves encoding into quantum coordinates
+1. **Canvas coordinates** - default coordinates used in canvas to draw and layout widgets
+2. **Complex plane** - complex plane is perfect for constructing different objects, such as hexagons using complex surface transformations
+3. **Field coordinate system** - a system used as a bijection onto the corresponding rectangular table to store and update objects information and simplify objects iteration and drawing into the canvas
+4. **Ai coordinate system** - AI uses its own variation of a coordinate system, perfectly polished for table traversal and conversion into the graph.
+5. **Quantum cat coordinates** - the cat uses its own coordinates which solve the issue of moves encoding into quantum coordinates
 
 Graph algorithms and euristics are used to traverse and find specific paths which will increase the success of the player which follows these paths. Tweaking these algorithms allowed us to create a non-trivial AI which can seriously challenge the player during the game, even though the game looks more adorable rather than challenging.
 
@@ -51,3 +51,4 @@ The perfect usecase of this project is the demonstration of the capabillities of
 - [ ] Migrate to the real hardware
 - [ ] Improve ipycanvas performance
 - [ ] or Migrate to other platform
+- [ ] Improve Artificial Intelligence
